@@ -1,0 +1,12 @@
+BRIGHTPATH ACADEMY
+Class 10 Physics - Light and reflection
+
+The angle of incidence equals the angle of reflection.
+The incident ray, reflected ray, and normal lie in the same plane.
+
+Practice
+1. Draw a ray diagram for a plane mirror.
+2. Explain why a plane mirror produces a virtual image.
+3. List two uses of a concave mirror.
+
+This is a sample resource for the TuitionApp demo.

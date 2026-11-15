@@ -1,0 +1,68 @@
+project_id = "tuition-app"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/**", "exp://localhost:19000/**"]
+jwt_expiry = 3600
+refresh_token_rotation_enabled = true
+refresh_token_reuse_interval = 10
+secure_password_requirements = true
+min_password_length = 6
+email_otp_expiry = 600
+sms_otp_expiry = 600
+phone_autoconfirm = false
+
+[auth.email]
+enable_signup = false
+enable_confirmations = false
+double_confirm_changes = true
+secure_email_change_enabled = true
+
+[auth.sms]
+enable_signup = false
+enable_confirmations = false
+template = "Your Tuition App OTP is {{ .Code }}. Valid for 10 minutes."
+
+[auth.external]
+enabled = false
+
+[db]
+enabled = true
+port = 54322
+major_version = 16
+
+[storage]
+enabled = true
+port = 54323
+file_size_limit = "25MiB"
+allowed_mime_types = ["image/*", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"]
+
+[realtime]
+enabled = true
+port = 54324
+ip_version = "ipv4"
+
+[edge_runtime]
+enabled = false
+
+[functions]
+enabled = false
+
+[studio]
+enabled = true
+port = 54325
+
+[logs]
+enabled = true
+level = "info"
+
+[dev]
+enabled = true
+port = 54326

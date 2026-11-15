@@ -1,0 +1,10 @@
+BRIGHTPATH ACADEMY
+Class 10 Mathematics - Quadratic equations
+
+1. Solve x^2 - 5x + 6 = 0 by factorization.
+2. Find the discriminant of 2x^2 + 3x - 2 = 0.
+3. A rectangle has an area of 48 square units. Its length is two units longer than its width. Find its dimensions.
+4. Explain when a quadratic equation has two equal real roots.
+
+Bring your working to the next mathematics class.
+This is a sample resource for the TuitionApp demo.
