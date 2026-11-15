@@ -1,0 +1,2 @@
+import {assignmentActor,assignmentErrorResponse} from '@/lib/assignment-server';
+export async function GET(){try{await assignmentActor(undefined,['owner','staff','parent']);const key=process.env.RAZORPAY_KEY_ID||'',configured=/^rzp_(test|live)_/.test(key)&&!!process.env.RAZORPAY_KEY_SECRET&&!!process.env.RAZORPAY_WEBHOOK_SECRET&&!key.includes('YOUR');return Response.json({configured,mode:configured?(key.startsWith('rzp_test_')?'test':'live'):'unconfigured'},{headers:{'Cache-Control':'private, no-store'}});}catch(e){return assignmentErrorResponse(e);}}

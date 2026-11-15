@@ -25,7 +25,7 @@ export async function openFeeCheckout(dueId: string): Promise<'submitted' | 'dis
   if (!response.ok) throw new Error(order.error || 'Unable to prepare your payment.');
   await loadCheckout();
   return new Promise((resolve, reject) => {
-    const checkout = new window.Razorpay!({ key: order.keyId, order_id: order.orderId, amount: order.amount, currency: 'INR', name: 'Amita’s Classes', description: 'Tuition fee payment', handler: () => resolve('submitted'), modal: { ondismiss: () => resolve('dismissed') } });
+    const checkout = new window.Razorpay!({ key: order.keyId, order_id: order.orderId, amount: order.amount, currency: 'INR', name: 'Amita’s Classes', description: order.mode==='test'?'TEST payment — no real money':'Tuition fee payment', handler: () => resolve('submitted'), modal: { ondismiss: () => resolve('dismissed') } });
     checkout.on('payment.failed', () => reject(new Error('Payment was not completed. You can try again.')));
     checkout.open();
   });

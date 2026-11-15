@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     const key = process.env.RAZORPAY_KEY_ID;
     const secret = process.env.RAZORPAY_KEY_SECRET;
-    if (!key || !secret) return NextResponse.json({ error: 'Online payments are not configured' }, { status: 503 });
+    if (!key || !secret || !process.env.RAZORPAY_WEBHOOK_SECRET || !/^rzp_(test|live)_/.test(key) || key.includes('YOUR')) return NextResponse.json({ error: 'Online payments are not configured' }, { status: 503 });
     const sb = createServerSupabaseClient();
     const { data: auth, error: authError } = await sb.auth.getUser();
     if (authError || !auth.user) return NextResponse.json({ error: 'Please sign in' }, { status: 401 });
@@ -32,6 +32,6 @@ export async function POST(req: Request) {
     if (order.amount !== remaining*100 || order.currency !== 'INR') return NextResponse.json({error:'Unexpected gateway response'}, {status:502});
     const {error:saveError} = await sb.from('payment_orders').insert({due_id:due.id,student_id:due.student_id,requested_by:auth.user.id,amount_inr:remaining,gateway_order_id:order.id});
     if (saveError) return NextResponse.json({error:'Unable to register payment order'}, {status:409});
-    return NextResponse.json({keyId:key,orderId:order.id,amount:order.amount,currency:'INR'});
+    return NextResponse.json({keyId:key,orderId:order.id,amount:order.amount,currency:'INR',mode:key.startsWith('rzp_test_')?'test':'live'});
   } catch { return NextResponse.json({error:'Invalid payment request'}, {status:400}); }
 }

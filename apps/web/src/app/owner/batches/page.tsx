@@ -170,10 +170,10 @@ function OwnerBatchesContent() {
           <span className="text-sm text-muted-400">{role}</span>
           <button
             onClick={() => void signOut()}
-            className="p-2 rounded-lg hover:bg-tuition-secondary transition-colors"
+            className="secondary-button"
             aria-label="Sign out"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m-7-10v6m7 4v-6m-7-4v-6m7 10h-5.293A2 2 0 0112 16v-1m0-4v-1a2 2 0 012-2h1m2.707 5.293A2 2 0 0115.707 6l-2.707 2.707z"/></svg>
+            Sign out
           </button>
         </div>
       </nav>

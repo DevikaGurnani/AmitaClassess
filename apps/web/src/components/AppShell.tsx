@@ -72,7 +72,7 @@ function WorkspaceShell({ children }: { children: ReactNode }) {
     </aside>
     <div className="workspace-body">
       <header className="workspace-topbar">
-        <div className="topbar-location"><button className="icon-button mobile-menu" aria-label="Open navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={22} /></button><span>Workspace</span><span className="breadcrumb-divider">/</span><strong>{links.find(item => isActive(item.href))?.label ?? 'Your learning space'}</strong></div>
+        <div className="topbar-location"><button className="icon-button mobile-menu labelled-action-button" aria-label="Open navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={22} /><span className="action-button-label">Open navigation</span></button><span>Workspace</span><span className="breadcrumb-divider">/</span><strong>{links.find(item => isActive(item.href))?.label ?? 'Your learning space'}</strong></div>
         <div className="topbar-actions">
           {isAdmin && <form className="global-search" onSubmit={event => { event.preventDefault(); router.push(`/owner/students?search=${encodeURIComponent(search)}`); }}><Search size={16} /><input aria-label="Search students" placeholder="Find a student…" value={search} onChange={event => setSearch(event.target.value)} /><kbd>↵</kbd></form>}
           <NotificationCenter />

@@ -135,10 +135,10 @@ function OwnerStudentsContent() {
           <span className="text-sm text-muted-400">{role}</span>
           <button
             onClick={() => void signOut()}
-            className="p-2 rounded-lg hover:bg-tuition-secondary transition-colors"
+            className="secondary-button"
             aria-label="Sign out"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m-7-10v6m7 4v-6m-7-4v-6m7 10h-5.293A2 2 0 0112 16v-1m0-4v-1a2 2 0 012-2h1m2.707 5.293A2 2 0 0115.707 6l-2.707 2.707z"/></svg>
+            Sign out
           </button>
         </div>
       </nav>
@@ -146,7 +146,7 @@ function OwnerStudentsContent() {
       <main className="p-6 pt-0">
         <div className="flex items-center justify-between py-5">
           <h1 className="text-2xl font-bold">Students</h1>
-          <button className="px-4 py-2 rounded-lg bg-tuition-primary text-white" onClick={() => router.push('/owner/students/add')}>Add student</button>
+          <button className="primary-button" onClick={() => router.push('/owner/students/add')}>Add student</button>
         </div>
         {error && <p role="alert" className="text-red-300 mb-4">{error}</p>}
         {loading && <p role="status">Loading students…</p>}
@@ -224,28 +224,28 @@ function OwnerStudentsContent() {
                   </td>
                   <td className="p-3">{student.school || '-'}</td>
                   <td className="p-3">
-                    <div className="flex gap-2">
+                    <div className="student-directory-actions">
                       <button
                         onClick={() => router.push(`/owner/students/${student.id}/profile`)}
-                        className="p-1 rounded-lg hover:bg-tuition-primary/10 text-tuition-primary transition-colors"
+                        className="secondary-button"
                         title="View Profile"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m-7-10v6m7 4v-6m-7-4v-6m7 10h-5.293A2 2 0 0112 16v-1m0-4v-1a2 2 0 012-2h1m2.707 5.293A2 2 0 0115.707 6l-2.707 2.707z"/></svg>
+                        View profile
                       </button>
                       <button
                         onClick={() => handleDelete(student.id)}
-                        className="p-1 rounded-lg hover:bg-tuition-error/10 text-tuition-error transition-colors"
+                        className="secondary-button student-left-button"
                         title="Mark as left"
                         aria-label={`Mark ${student.name} as left`}
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m-7-10v6m7 4v-6m-7-4v-6m7 10h-5.293A2 2 0 0112 16v-1m0-4v-1a2 2 0 012-2h1m2.707 5.293A2 2 0 0115.707 6l-2.707 2.707z"/></svg>
+                        Mark as left
                       </button>
                       <button
                         onClick={() => router.push(`/owner/students/${student.id}/profile`)}
-                        className="p-1 rounded-lg hover:bg-tuition-warning/10 text-tuition-warning transition-colors"
+                        className="secondary-button"
                         title="Edit"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        Edit student
                       </button>
                     </div>
                   </td>
