@@ -36,13 +36,15 @@ test('admin creation rejects unauthorized requests and rolls back profile failur
     if (name === '@supabase/supabase-js') return { createClient: () => admin };
     if (name === '@/lib/supabase/server') return { createServerSupabaseClient: () => client };
     if (name === '@/lib/account-validation') return module.exports;
+    if (name === '@/lib/assignment-server') return {assignmentUuid:value=>typeof value==='string'&&/^[a-f0-9-]{36}$/i.test(value)};
     throw new Error(`Unexpected import ${name}`);
   });
   const oldUrl = process.env.NEXT_PUBLIC_SUPABASE_URL, oldKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'test-only-key';
   const reset = () => { state = { user: { id: actorId, app_metadata: {} }, actor: { role: 'owner', status: 'active' }, created: [], deleted: [] }; };
-  const input = { name: 'Teacher', email: 'teacher@example.com', phone: '9876543210', role: 'teacher' };
+  // Generic provisioning checks use a parent; teachers now require teaching scopes.
+  const input = { name: 'Teacher', email: 'teacher@example.com', phone: '9876543210', role: 'parent' };
   const send = (body=input,origin='http://localhost:3000') => route.exports.POST(new Request('http://localhost:3000/api/admin/users', { method: 'POST', headers: { origin, 'content-type':'application/json' }, body: JSON.stringify(body) }));
   try {
     await t.test('cross-origin and signed-out callers cannot provision users',async()=>{

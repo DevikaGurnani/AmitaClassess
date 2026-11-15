@@ -11,6 +11,7 @@ import FamilyFees from '@/components/console/FamilyFees';
 import AssignmentsPanel from '@/components/AssignmentsPanel';
 import LibraryBrowser from '@/components/LibraryBrowser';
 import ParentAssignmentProgress from '@/components/ParentAssignmentProgress';
+import TeachingPace from '@/components/TeachingPace';
 import TestAnswerSheets from '@/components/TestAnswerSheets';
 import WorkspaceLoading from '@/components/WorkspaceLoading';
 import BrandedProgress from '@/components/BrandedProgress';
@@ -44,6 +45,7 @@ export default function LearnerPortal({ accountRole }: { accountRole: LearnerRol
       </>}
       <div className={`learner-grid console-panels ${view !== 'overview' ? 'console-detail' : ''}`}>
         {view==='answer-sheets'&&<TestAnswerSheets key={studentId} studentId={studentId} readOnly={isParent}/>} {!isParent&&view==='assignments'&&<AssignmentsPanel/>}{isParent&&view==='assignments'&&<ParentAssignmentProgress studentId={studentId} batches={batches.map(row=>row.id)}/>}
+        {!isParent&&(view==='overview'||view==='schedule')&&<TeachingPace/>}
         {show('schedule') && <ClassSchedule batches={batches} compact={view === 'overview'} />}
         {show('results') && <ResultsRecords key={studentId} subjects={batches.flatMap(batch=>batch.subjects||[])} tests={data.tests} marks={marks} studentName={student.name} compact={view === 'overview'} />}
         {show('attendance') && <AttendanceRecords records={attendance} batches={batches} compact={view === 'overview'} liveStatus={data.attendanceLiveStatus} />}
