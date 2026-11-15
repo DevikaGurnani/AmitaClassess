@@ -11,5 +11,6 @@ apps/web/.next-dev
 **/.env.*.local
 **/.env
 **/*.tsbuildinfo
-supabase
-scripts
+# Ignore only repository-root administration folders, not src/lib/supabase.
+/supabase/
+/scripts/
