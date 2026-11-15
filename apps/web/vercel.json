@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build --workspace=@tuition/shared && npm run build --workspace=@tuition/web",
+  "installCommand": "cd ../.. && npm ci --include=optional",
+  "functions": {
+    "src/app/api/**/route.ts": { "maxDuration": 60 }
+  }
+}
